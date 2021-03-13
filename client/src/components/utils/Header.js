@@ -4,7 +4,7 @@ const Header = ({ currentUser }) => {
   const links = [
     !currentUser && { label: 'Sign Up', href: '/signup' },
     !currentUser && { label: 'Sign In', href: '/signin' },
-    currentUser && { label: 'Account', href: `/user/${currentUser._id}` },
+    currentUser && { label: 'Dashboard', href: `/dashboard` },
     currentUser && { label: 'Sign Out', href: '/signout' },
   ]
     .filter((linkConfig) => linkConfig)
@@ -21,7 +21,12 @@ const Header = ({ currentUser }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
       <Link to={'/'}>
-        <span className="navbar-brand">StageWood</span>
+        <span className="navbar-brand">
+          <img
+            src={process.env.PUBLIC_URL + `/images/StageWood_logo.png`}
+            alt="logo"
+          />
+        </span>
       </Link>
       <button
         className="navbar-toggler"

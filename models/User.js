@@ -6,11 +6,7 @@ const bcrypt = require('bcrypt-nodejs');
 const userSchema = new Schema({
   email: { type: String, unique: true, lowercase: true },
   password: String,
-  avatar: {
-    type: String,
-    default:
-      'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.iconfinder.com%2Ficons%2F2524750%2Favatar_facebook_profile_user_profile_icon&psig=AOvVaw3OJgkaaWcrvQV7KMDXzrQ-&ust=1615674643081000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLjLoZ_nq-8CFQAAAAAdAAAAABAS',
-  },
+  avatar: { type: String },
   username: String,
   name: String,
 });

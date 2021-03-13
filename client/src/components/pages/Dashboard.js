@@ -12,7 +12,7 @@ const Dashborad = () => {
 
   return (
     <div className="container">
-      <h2 className="text-center">Dashborad</h2>
+      <h2 className="text-center title-dashboard">Dashborad</h2>
       <div className="row">
         <div className="col-md-12">
           <Card user={user} />

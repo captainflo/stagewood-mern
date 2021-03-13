@@ -26,8 +26,13 @@ const validate = (values) => {
   } else if (
     !/^((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})/.test(values.password)
   ) {
-    errors.password =
-      'Must have at least 6 characters, contain at least one capital letter, and one number. ';
+    errors.password = [
+      'Must have at least 6 characters',
+      <br />,
+      'Contain at least one capital letter',
+      <br />,
+      'One number. ',
+    ];
   }
 
   if (!values.confirmPassword) {

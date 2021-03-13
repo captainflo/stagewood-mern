@@ -15,25 +15,21 @@ const Signup = (props) => {
   const { handleSubmit, submitting } = props;
 
   const onSubmit = (value) => {
-    const form = {
-      ...value,
-      avatar: image,
-    };
-    if (form.avatar === '') {
+    value.avatar = image;
+    if (value.avatar === '') {
       setErrorImage('Required image');
     } else {
       props.signup(value, () => {
         props.history.push('/dashboard');
       });
     }
-    console.log(form);
   };
 
   // Image Cluodinary
   let widget = window.cloudinary.createUploadWidget(
     {
       cloudName: 'dwtc6zep7',
-      uploadPreset: 'ghh86ckz',
+      uploadPreset: 'bfmixeap',
     },
     (error, result) => {
       if (result.event === 'success') {

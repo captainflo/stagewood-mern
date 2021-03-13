@@ -18,7 +18,7 @@ const App = (props) => {
     if (authenticated) {
       props.fetchUser();
     }
-  }, [authenticated, props.fetchUser]);
+  }, [authenticated, props.fetchUser, props]);
 
   return (
     <div>

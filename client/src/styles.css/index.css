@@ -6,6 +6,11 @@ h4,
 h2 {
   font-weight: 400;
 }
+/* Welcome page */
+.title {
+  text-align: center;
+  margin-top: 20px;
+}
 /* Button */
 .btn-website {
   background: #ed213a !important;
@@ -25,6 +30,10 @@ nav a {
   color: black;
 }
 
+nav img {
+  width: 150px;
+}
+
 a:hover {
   color: #ed213a;
   text-decoration: none;
@@ -41,22 +50,9 @@ a:hover {
   width: 100%;
 }
 
-/* label-date */
-.label-date {
-  font-size: 12px;
-  display: block;
-  margin-top: -15px;
-}
-
-/*  */
-.wrapper-all-ticket {
-  margin-top: 40px;
-  margin-bottom: 40px;
-}
-/* search activities */
-.button-search {
-  margin-top: 24px;
-  margin-left: 5px;
+/* Dashboard */
+.title-dashboard {
+  margin: 40px;
 }
 
 @media only screen and (min-width: 1024px) {
