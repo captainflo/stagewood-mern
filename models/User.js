@@ -9,10 +9,10 @@ const userSchema = new Schema({
   avatar: {
     type: String,
     default:
-      'https://helenkellerfestival.com/site/wp-content/uploads/2018/06/ticket.jpg',
+      'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.iconfinder.com%2Ficons%2F2524750%2Favatar_facebook_profile_user_profile_icon&psig=AOvVaw3OJgkaaWcrvQV7KMDXzrQ-&ust=1615674643081000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLjLoZ_nq-8CFQAAAAAdAAAAABAS',
   },
-  firstName: String,
-  lastName: String,
+  username: String,
+  name: String,
 });
 
 // On save Hook, encrypt password

@@ -27,6 +27,9 @@ exports.signup = function (req, res, next) {
   console.log(req.body);
   const email = req.body.email;
   const password = req.body.password;
+  const avatar = req.body.avatar;
+  const name = req.body.name;
+  const username = req.body.username;
 
   if (!email || !password) {
     return res
@@ -46,6 +49,9 @@ exports.signup = function (req, res, next) {
     const user = new User({
       email: email,
       password: password,
+      avatar: avatar,
+      name: name,
+      username: username,
     });
 
     user.save(function (error) {
