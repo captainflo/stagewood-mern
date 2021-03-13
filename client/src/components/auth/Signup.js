@@ -1,20 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
 import renderField from './form/renderField';
-import renderFieldPic from './form/renderFieldPic';
 import { reduxForm, Field } from 'redux-form';
 import * as actions from '../actions';
 import { compose } from 'redux';
 import { connect, useSelector } from 'react-redux';
 import validate from './form/validation';
+import Widget from '../utils/Widget';
 
 const Signup = (props) => {
   const error = useSelector((state) => state.auth.errorMessage);
+  const [image, setImage] = useState('');
+  const [publicId, setPublicId] = useState('');
+  const [errorImage, setErrorImage] = useState('');
   const { handleSubmit, submitting } = props;
 
   const onSubmit = (value) => {
-    props.signup(value, () => {
-      props.history.push('/dashboard');
-    });
+    const form = {
+      ...value,
+      avatar: image,
+    };
+    if (form.avatar === '') {
+      setErrorImage('Required image');
+    } else {
+      props.signup(value, () => {
+        props.history.push('/dashboard');
+      });
+    }
+    console.log(form);
+  };
+
+  // Image Cluodinary
+  let widget = window.cloudinary.createUploadWidget(
+    {
+      cloudName: 'dwtc6zep7',
+      uploadPreset: 'ghh86ckz',
+    },
+    (error, result) => {
+      if (result.event === 'success') {
+        setImage(result.info.url);
+        setPublicId(result.info.public_id);
+      }
+    }
+  );
+  const showWidget = () => {
+    widget.open();
+  };
+
+  const deletePhoto = async () => {
+    const imageDelete = {
+      img: publicId,
+    };
+    props.deleteImage(imageDelete);
+    setImage('');
   };
 
   return (
@@ -34,18 +71,24 @@ const Signup = (props) => {
               Sigup <i className="fas fa-sign-in-alt"></i>
             </h2>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <Field
-                name="username"
-                type="text"
-                component={renderField}
-                label="Username"
-              />
-              <Field
-                name="name"
-                type="text"
-                component={renderField}
-                label="name"
-              />
+              <div className="row">
+                <div className="col-md-6">
+                  <Field
+                    name="username"
+                    type="text"
+                    component={renderField}
+                    label="Username"
+                  />
+                </div>
+                <div className="col-md-6">
+                  <Field
+                    name="name"
+                    type="text"
+                    component={renderField}
+                    label="name"
+                  />
+                </div>
+              </div>
               <Field
                 name="email"
                 type="email"
@@ -64,12 +107,18 @@ const Signup = (props) => {
                 component={renderField}
                 label="Confirm Password"
               />
-              <Field
-                name="avatar"
-                component={renderFieldPic}
-                type="file"
-                label="Picture"
+              <Widget
+                showWidget={showWidget}
+                deletePhoto={deletePhoto}
+                image={image}
               />
+              <div className="form-group">
+                {errorImage ? (
+                  <div className="text-danger">{errorImage}</div>
+                ) : (
+                  ''
+                )}
+              </div>
               <div>
                 <div className="form-group">
                   {error ? <span className="text-danger">{error}</span> : ''}

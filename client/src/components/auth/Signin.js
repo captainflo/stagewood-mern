@@ -7,7 +7,7 @@ import { connect, useSelector } from 'react-redux';
 import validate from './form/validation';
 
 const Signin = (props) => {
-  const error = useSelector((state) => state.auth.errorMessage);
+  const error = useSelector((state) => state.auth.errorLogin);
   const { handleSubmit, submitting } = props;
 
   const onSubmit = (value) => {
