@@ -4,7 +4,7 @@ Build a simple Login/Register webpage
 
 **Preview**
 
-![](ticketapp.gif)
+![](stagewood.gif)
 
 **Technologies Used**
 
@@ -32,4 +32,4 @@ Build a simple Login/Register webpage
 - bootstrap
 - ...
 
-[Live Demo]()
+[Live Demo](https://stagewood-inter.herokuapp.com/)
