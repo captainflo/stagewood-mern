@@ -1,4 +1,4 @@
-import '../../styles.css/widget.css';
+import '../../styles/widget.css';
 const Widget = (props) => {
   return (
     <div className="form-group">
